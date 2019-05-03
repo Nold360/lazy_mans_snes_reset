@@ -60,14 +60,15 @@ If succeeded, you should have a new .hex-file & you're ready to flash your attin
 
 
 
-# Soldering the attiny into the SNES
+# Installing the attiny into SNES
 **NOTICE:** This guide has been created to the best of my knowledge and certain. But without any guarantee of correctness! **Make sure that you know what you are doing**, as I'm **not** responsible for any damage or harm you might do to your SNES or yourself!
 
-
-
 ## Attiny Pinout
-
-
-
+![attiny pinout](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/SNES_Reset_attiny.jpg)
 
 ## SNES Junior
+![SNES Junior](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/LMSR_in_SNES_Junior.JPG)
+
+# Additinal Ressources
+ - [Super Nintendo – Pinouts & Protocol FAQ](https://gamefaqs.gamespot.com/snes/916396-super-nintendo/faqs/5395)
+ - [Frontplate Pinout](https://i.imgur.com/3deHaFa.png)
