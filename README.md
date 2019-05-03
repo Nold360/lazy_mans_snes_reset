@@ -67,7 +67,7 @@ If succeeded, you should have a new .hex-file & you're ready to flash your attin
 ![attiny pinout](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/SNES_Reset_attiny.jpg)
 
 ## SNES Junior
-![SNES Junior](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/LMSR_in_SNES_Junior.JPG)
+![SNES Junior](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/LMSR_in_SNES_Junior.jpg)
 
 # Additinal Ressources
  - [Super Nintendo – Pinouts & Protocol FAQ](https://gamefaqs.gamespot.com/snes/916396-super-nintendo/faqs/5395)
