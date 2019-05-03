@@ -6,7 +6,7 @@ When this button combination is pressed, the microcontroller will set the *RESET
 
 This repository contains everything you need to build your own & become lazy!
 
-
+![LMSR POC](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/doc/lmsr_poc.gif)
 
 # Prerequirements
 ## Hardware
