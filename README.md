@@ -25,7 +25,7 @@ cd lazy_mans_snes_reset
  - Install some kind of ISP flashing software. In this example we're going to use "[avrdude](https://www.nongnu.org/avrdude/)"
  - This was tested on Linux only!
 
-You can also just download the precompiled hex-file & flash it using your prefered software: [Download](https://github.com/Nold360/lazy_mans_snes_reset)
+You can also just download the precompiled hex-file & flash it using your prefered software: [Download](https://raw.githubusercontent.com/Nold360/lazy_mans_snes_reset/master/lazy_mans_snes_reset.hex)
 
 **Important:** Don't forget to set the fuses correctly!
 
