@@ -1,10 +1,11 @@
 /***
 * Lazy Man's SNES Reset - ATtiny Firmware
 * By: Nold
+* Modified By: Viper33802
 * License: GPLv3
 * Desc: Sniff's SNES controller port for key-combo, then resets
 *       SNES by pulling PIN_RESET high. (5v)
-* Source: https://github.com/Nold360/lazy_mans_snes_reset
+* Source: https://github.com/viper33802/lazy_mans_snes_reset
 */
 
 #include <avr/io.h>
@@ -36,8 +37,9 @@
 #define START 		3
 #define SELECT 		2
 
-// Button combination for reset
-uint16_t const reset_mask = ((1 << START) | (1 << BUTTON_R) | (1 << SELECT));
+// Button combination for reset and restart
+uint16_t const reset_mask = ((1 << START) | (1 << BUTTON_L) | (1 << SELECT));
+uint16_t const restart_mask = ((1 << START) | (1 << BUTTON_R) | (1 << SELECT));
 
 // Interrupt callback, which reads the controller data
 ISR(INT0_vect)
@@ -64,10 +66,16 @@ ISR(INT0_vect)
 			_delay_us(1);
 	}
 
-	//Toggle Reset
+	//Toggle Reset Game
 	if((button_state ^ reset_mask) == 0) {
 		PORTB |=  (1 << PIN_RESET);
-		_delay_ms(200);
+		_delay_ms(100);
+		PORTB &= ~(1 << PIN_RESET);
+		
+	//Toggle Restart Console
+	if((button_state ^ restart_mask) == 0) {
+		PORTB |=  (1 << PIN_RESET);
+		_delay_ms(2000);
 		PORTB &= ~(1 << PIN_RESET);
 	}
 
