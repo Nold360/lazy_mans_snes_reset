@@ -4,13 +4,13 @@
 
 When a reset or restart button combination is pressed, the microcontroller will set the *RESET-pin* to "high" for a few milli seconds. Is this pin correctly connected to the SNES's reset button, it will trigger a (hard-)reset of the console.
 
-All functions and button Combonations:
-Game Reset 				- Start + Select + L
-Restart to SD2SNES Menu - Start + Select + R
-Enable/Disable Reset	- Start + Select + Y
-Enable/Disable Restart	- Start + Select + X
-Enable/Disable LED		- Select + Y + L
-Change LED COlor		- Select + Y + R
+All functions and button Combonations:  
+Game Reset 				- Start + Select + L  
+Restart to SD2SNES Menu - Start + Select + R  
+Enable/Disable Reset	- Start + Select + Y  
+Enable/Disable Restart	- Start + Select + X  
+Enable/Disable LED		- Select + Y + L  
+Change LED COlor		- Select + Y + R  
 
 
 ![SNES IGR POC](https://raw.githubusercontent.com/Viper33802/SNES_JR_IGR/master/doc/SNES_JR_IGR_proto.gif)
