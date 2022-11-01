@@ -25,11 +25,7 @@ Change LED COlor		- Select + Y + R
  - Some wire, soldering iron, SNES (duh..)
 
 ## Software
- - Clone git repository & switch to directory using: 
-```
-git clone https://gitlab.com/nold360/lazy_mans_snes_reset.git
-cd lazy_mans_snes_reset
-```
+ - Clone git repository
 
  - Install some kind of ISP flashing software. In this example we're going to use "[avrdude](https://www.nongnu.org/avrdude/)"
  - This was tested on Linux only!
