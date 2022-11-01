@@ -45,20 +45,20 @@ const struct color {
 	const uint8_t green;
 	const uint8_t blue;
 	} COLORS[] = {
-//	{0xC0, 0xC0, 0xC0}, // silver
+	{0xC0, 0xC0, 0xC0}, // silver
 	{0x80, 0x80, 0x80}, // gray
 	{0xFF, 0xFF, 0xFF}, // white
-//	{0x80, 0x00, 0x00}, // maroon
+	{0x80, 0x00, 0x00}, // maroon
 	{0xFF, 0x00, 0x00}, // red
 	{0x80, 0x0D, 0x80}, // purple
-//	{0xFF, 0x00, 0xFF}, // fuchsia
+	{0xFF, 0x00, 0xFF}, // fuchsia
 	{0x00, 0x80, 0x00}, // green
-//	{0x00, 0xFF, 0x00}, // lime
-//	{0x80, 0x80, 0x00}, // olive
+	{0x00, 0xFF, 0x00}, // lime
+	{0x80, 0x80, 0x00}, // olive
 	{0xFF, 0xFF, 0x00}, // yellow
-//	{0x00, 0x00, 0x80}, // navy
+	{0x00, 0x00, 0x80}, // navy
 	{0x00, 0x00, 0xFF}, // blue
-//	{0x00, 0x80, 0x80}, // teal
+	{0x00, 0x80, 0x80}, // teal
 	{0x00, 0xFF, 0xFF}, // aqua
 };
 
@@ -81,7 +81,6 @@ volatile unsigned char rset;
 volatile unsigned char rsrt;
 unsigned char led;
 unsigned char ledc;
-int lc;
 
 void EEPROM_write(unsigned char ucAddress, unsigned char ucData)
 {
@@ -204,15 +203,10 @@ ISR(INT0_vect)
 
 	//Cycle LED Colors
 	if((button_state ^ led_color) == 0) {
-		ledc = EEPROM_read(ledcaddr);
-		lc = (int)ledc;
-		lc++;
-		ledc = (unsigned char)lc;
-		if (lc > 8) {
-			ledc = 0x01;
-			lc = (int)ledc;
-		}
-		EEPROM_write(ledcaddr, ledc);
+		unsigned char a = EEPROM_read(ledcaddr);
+		a++;
+		if ((int)a > 15) {a = 0x01;}
+		EEPROM_write(ledcaddr, a);
 		Update_Settings();
 		_delay_ms(250);
 	}
