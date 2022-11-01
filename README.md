@@ -1,6 +1,6 @@
 # SNES JR IGR
 
-"SNES Junior In-Game Reset" is an attiny microcontroller project that sniffs the SNES controller port for a certain key combinations and (optionally) adds an addressable RGB power LED. This projet was designed with a SD2SNES in mind and will allow for a game to be reset or restarting to the SD2SNES Menu. Additional controller combinations have been added to allow for functions to be enabled and disabled[Default: Start + Select + R].
+"SNES Junior In-Game Reset" is an attiny microcontroller project that sniffs the SNES controller port for a certain key combinations and (optionally) adds an addressable RGB power LED. This projet was designed with a SD2SNES in mind and will allow for a game to be reset or restarting to the SD2SNES Menu. Additional controller combinations have been added to allow for functions to be enabled and disabled.
 
 When a reset or restart button combination is pressed, the microcontroller will set the *RESET-pin* to "high" for a few milli seconds. Is this pin correctly connected to the SNES's reset button, it will trigger a (hard-)reset of the console.
 
