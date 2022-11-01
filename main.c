@@ -8,7 +8,8 @@
 *   Also Adds a Power RGB LED.
 * Original Project By: Nold
 * Original Source: https://github.com/Nold360/lazy_mans_snes_reset
-*/#include <avr/io.h>
+*/
+#include <avr/io.h>
 #include <avr/interrupt.h>
 
 #ifndef F_CPU
