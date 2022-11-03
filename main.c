@@ -76,11 +76,13 @@ const unsigned char restartaddr = 01;
 const unsigned char ledaddr = 02;
 const unsigned char ledcaddr = 03;
 const uint8_t ledpin = _BV(PB3);
-
+const unsigned char b = 0x00;
+const unsigned char f = 0xFF;
+const unsigned char c = 0x80;
 volatile unsigned char rset;
 volatile unsigned char rsrt;
-unsigned char led;
-unsigned char ledc;
+// unsigned char led;
+//unsigned char ledc;
 
 void EEPROM_write(unsigned char ucAddress, unsigned char ucData)
 {
@@ -121,17 +123,24 @@ void Update_Led()
 		ws2812b_set_color(ledpin, color.red, color.green, color.blue);
 	}
 	else {
-		ws2812b_set_color(ledpin, 0x00, 0x00, 0x00);
+		ws2812b_set_color(ledpin, b, b, b);
 	}
 }
 
-//Retreive all settings from EEPROM
+void Blink(unsigned char cr, unsigned char cg, unsigned char cb)
+{
+	ws2812b_set_color(ledpin, cr, cg, cb);
+	_delay_ms(250);
+	Update_Led();
+}
+
+//Retrieve all settings from EEPROM
 void Update_Settings()
 {
 	rset = EEPROM_read(resetaddr);
 	rsrt = EEPROM_read(restartaddr);
-	led = EEPROM_read(ledaddr);
-	ledc = EEPROM_read(ledcaddr);
+//	led = EEPROM_read(ledaddr);
+//	ledc = EEPROM_read(ledcaddr);
 }
 
 // Toggle EEPROM Bit
@@ -141,7 +150,6 @@ void FlipEPBit(unsigned char EPaddr)
 	w =! w;
 	EEPROM_write(EPaddr, w);
 	Update_Settings();
-	_delay_ms(250);
 }
 
 // Interrupt callback, which reads the controller data
@@ -172,7 +180,7 @@ ISR(INT0_vect)
 	//Toggle Reset
 	if((button_state ^ reset_mask) == 0 && rset == 0) {
 		PORTB |=  (1 << PIN_RESET);
-		_delay_ms(200);
+		Blink(b, b, b);
 		PORTB &= ~(1 << PIN_RESET);
 	}
 	
@@ -187,25 +195,30 @@ ISR(INT0_vect)
 	if((button_state ^ reset_enable) == 0) {
 		FlipEPBit(resetaddr);
 		Update_Settings();
+		Blink(b, c, f);
 	}
 
 	//Enable Disable Restart
 	if((button_state ^ restart_enable) == 0) {
 		FlipEPBit(restartaddr);
 		Update_Settings();
+		Blink(f, b, b);
 	}
 	
 	//Enable Disable LED
 	if((button_state ^ led_enable) == 0) {
 		FlipEPBit(ledaddr);
 		Update_Settings();
+		Blink(b, b, b);
 	}
 
 	//Cycle LED Colors
 	if((button_state ^ led_color) == 0) {
 		unsigned char a = EEPROM_read(ledcaddr);
 		a++;
-		if ((int)a > 15) {a = 0x01;}
+		if ((int)a > 15) {
+			a = 0x01;
+		}
 		EEPROM_write(ledcaddr, a);
 		Update_Settings();
 		_delay_ms(250);
